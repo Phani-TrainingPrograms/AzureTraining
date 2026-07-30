@@ -295,16 +295,17 @@ Before running the application, your local Windows environment needs to know who
    2. Hit F5 or click Run.
    3. The console app will open, authenticate silently behind the scenes, fetch the app.config file from the cloud, and print Setting1=Value1 right into your command screen.
 
--------------------------------------------
-Hard code the Secret key to access from Visual Studio account
-----------------------------------------------
+## Hard code the Secret key to access from Visual Studio account
+
 Hardcode a Local Secret (For Lab Testing Only)If you cannot change your account logins due to company machine restrictions, you can bypass the automated identity lookups by passing a temporary connection string or secret into the code.Warning: Never use this method in production code.1. Get your Access Key from AzureGo to the Azure Portal and open your Storage Account (winprogstorage2026).On the left sidebar menu under Security + networking, click Access keys.Click Show next to Connection string under key1, and copy the full string to your clipboard.2. Update Your C# CodeModify your Program.cs code to use the connection string directly, bypassing DefaultAzureCredential completely:csharp// Replace this block in your old code:
+```
 // var serviceClient = new BlobServiceClient(new Uri(blobServiceUri), new DefaultAzureCredential());
 
 // With this simplified block (Paste your actual connection string here):
 string connectionString = "DefaultEndpointsProtocol=https;AccountName=winprogstorage2026;AccountKey=...[rest of your key]...";
 var serviceClient = new BlobServiceClient(connectionString);
-Use code with caution.If you run into any permission blocks or want to proceed with the lab, let me know if you would like to:Troubleshoot a specific error code or exception message you are seeing in the console?Learn how to encrypt your connection strings using a local appsettings.json file so secrets aren't naked in your code files?Move this C# application onto your Ubuntu Linux VM and run it using the .NET Linux runtime?16 sitesAuthentication and the Azure SDK - Azure SDK Blog25 Feb 2020 — The third type of credential is for local development. If you have an appropriately configured developer workstation with Visual S...Microsoft Dev BlogsSign in or switch Visual Studio accounts15 Dec 2025 — If you have multiple accounts, you can add them all to Visual Studio so that you can access the resources from any account without...Microsoft LearnSign in or switch Visual Studio accounts15 Dec 2025 — To authenticate and access Azure resources from Visual Studio, sign in to Visual Studio with an account that has access to Azure r...Microsoft Learn
+Use code with caution.
+```
 ------------------------------
 Using Azure Key Vault to store secured data.
 ------------------------------
