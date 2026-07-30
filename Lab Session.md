@@ -92,7 +92,7 @@ In Linux, Nginx serves web pages out of a specific directory (folder) path: /var
    
    cd /var/www/html
    
-   [40] 
+  
    2. Delete the default Nginx welcome page:
    
    sudo rm index.nginx-debian.html
@@ -132,7 +132,7 @@ In Linux, Nginx serves web pages out of a specific directory (folder) path: /var
    
    http://<Your_Public_IP>
    
-   3. You should instantly see your styled webpage displaying "Hello Windows Developers!". [43, 44, 45] 
+   3. You should instantly see your styled webpage displaying "Hello Windows Developers!". 
 
 ------------------------------
 ## Step 7: Clean Up Resources (Crucial)
@@ -160,9 +160,9 @@ For Windows programmers, think of an Azure Storage Account as a secure, cloud-ba
       * Region: Select the same region as your VM (e.g., East US).
       * Primary service: Azure Blob Storage or Azure Virtual Machines.
       * Performance: Select Standard (ideal for general file storage).
-      * Redundancy: Select Locally-redundant storage (LRS). This is the lowest-cost option, making it perfect for labs and testing. [12, 13, 14, 15, 16] 
+      * Redundancy: Select Locally-redundant storage (LRS). This is the lowest-cost option, making it perfect for labs and testing. 
    5. Click the Review + create button at the bottom of the screen. [17] 
-   6. Once validation passes, click Create. This process usually takes less than a minute. [18, 19] 
+   6. Once validation passes, click Create. This process usually takes less than a minute. 
 
 ------------------------------
 ## Step 2: Create a Container (The Folder System)
@@ -235,8 +235,8 @@ Install-Package Azure.Identity
 ------------------------------
 ## Step 4: Write the C# Code
 Replace all the code inside your Program.cs file with the following snippet. [13, 14] 
-Make sure to replace the placeholder URL with your actual Azure Storage Account URL (You can find this URL in the Azure Portal under your storage account's Endpoints tab, or just substitute your storage account name into the string below). [15] 
-'''
+Make sure to replace the placeholder URL with your actual Azure Storage Account URL (You can find this URL in the Azure Portal under your storage account's Endpoints tab, or just substitute your storage account name into the string below). 
+```
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -291,7 +291,7 @@ class Program
         Console.ReadKey();
     }
 }
-'''
+```
 ------------------------------
 ## Step 5: Run Your Code locally on Windows
 Before running the application, your local Windows environment needs to know who you are so DefaultAzureCredential can grab your identity: [16] 
@@ -326,12 +326,12 @@ Using Azure Key Vault to store secured data.
       * Region: Select the same region as your virtual machine and storage account (e.g., East US).
       * Pricing tier: Select Standard.
       * Days to retain deleted vaults: Leave at the default (90).
-      * Purge protection: Select Disable. [14, 15, 16, 17, 18] 
-   5. Click Next to move to the Access configuration tab. [19] 
+      * Purge protection: Select Disable.
+   5. Click Next to move to the Access configuration tab.
 
 ------------------------------
 ## Step 2: Configure Permissions (Azure RBAC)
-Azure uses strict identity models to determine who can read a vault's secret. [20] 
+Azure uses strict identity models to determine who can read a vault's secret. 
 
    1. On the Access configuration tab, under Permission model, select Azure role-based access control (recommended).
    2. Click Review + create at the bottom, then click Create once validation passes.
@@ -340,7 +340,7 @@ Azure uses strict identity models to determine who can read a vault's secret. [2
    5. Click + Add > Add role assignment.
    6. Search for the role Key Vault Secrets User (this allows reading secret values) and select it. Click Next.
    7. Select User, group, or service principal, click + Select members, search for your own Azure portal email address, and select it.
-   8. Click Review + assign. [21, 22, 23, 24, 25] 
+   8. Click Review + assign. 
 
 ------------------------------
 ## Step 3: Add Your Connection String Secret to Key Vault
@@ -351,7 +351,7 @@ Azure uses strict identity models to determine who can read a vault's secret. [2
    * Upload options: Manual
       * Name: DbConnectionString
       * Secret value: Paste your database connection string here (e.g., Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;).
-      * Leave all other settings at their defaults. [28, 29, 30, 31] 
+      * Leave all other settings at their defaults.
    4. Click Create. Your secret is now securely encrypted at rest inside Azure. [32] 
 
 ------------------------------
@@ -363,8 +363,8 @@ Install-Package Azure.Security.KeyVault.Secrets
 (We will reuse the Azure.Identity package we installed earlier for secure authentication). [35] 
 ------------------------------
 ## Step 5: Write the C# Code to Fetch the Secret
-Update your Program.cs file. The code uses DefaultAzureCredential to verify your identity and directly requests the secret by its name without processing any local text files or configuration parsing. [36, 37, 38] 
-'''
+Update your Program.cs file. The code uses DefaultAzureCredential to verify your identity and directly requests the secret by its name without processing any local text files or configuration parsing. 
+```
 using System;
 using System.Threading.Tasks;
 using Azure.Identity;
@@ -407,7 +407,7 @@ class Program
         Console.ReadKey();
     }
 }
-'''
+```
 ------------------------------
 ## Step 6: Test the Secure Application
 
