@@ -104,7 +104,7 @@ In Linux, Nginx serves web pages out of a specific directory (folder) path: /var
    
    [42] 
    4. Your command prompt screen will turn into a text editor. Paste the following HTML code block directly into the window:
-   
+   '''
    <!DOCTYPE html>
    <html>
    <head>
@@ -119,7 +119,7 @@ In Linux, Nginx serves web pages out of a specific directory (folder) path: /var
        <p>This simple web application is running successfully on an Azure Linux VM.</p>
    </body>
    </html>
-   
+   '''
    5. Save and exit the editor:
    * Press Ctrl + O (Write Out) and hit Enter to save the file.
       * Press Ctrl + X to exit the Nano editor and return to the command prompt.
@@ -216,14 +216,14 @@ By default, even if you are the owner of the subscription, your code needs expli
    5. Search for the role Storage Blob Data Reader (this allows your code to read files but not delete or modify them) and select it. Click Next.
    6. Select User, group, or service principal.
    7. Click + Select members, search for your own Azure login email address, select it, and click Select.
-   8. Click Review + assign. [4, 5, 6, 7, 8] 
+   8. Click Review + assign. 
 
 ------------------------------
 ## Step 2: Create the C# Console Application
 
    1. Open Visual Studio or VS Code on your Windows machine.
    2. Create a new project: Console App (.NET 6.0, .NET 8.0, or later).
-   3. Name your project AzureStorageReader. [9] 
+   3. Name your project AzureStorageReader. 
 
 ------------------------------
 ## Step 3: Install the Required NuGet Packages
@@ -236,8 +236,13 @@ Install-Package Azure.Identity
 ## Step 4: Write the C# Code
 Replace all the code inside your Program.cs file with the following snippet. [13, 14] 
 Make sure to replace the placeholder URL with your actual Azure Storage Account URL (You can find this URL in the Azure Portal under your storage account's Endpoints tab, or just substitute your storage account name into the string below). [15] 
+'''
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Azure.Identity;
+using Azure.Storage.Blobs;
 
-using System;using System.IO;using System.Threading.Tasks;using Azure.Identity;using Azure.Storage.Blobs;
 class Program
 {
     static async Task Main(string[] args)
@@ -286,7 +291,7 @@ class Program
         Console.ReadKey();
     }
 }
-
+'''
 ------------------------------
 ## Step 5: Run Your Code locally on Windows
 Before running the application, your local Windows environment needs to know who you are so DefaultAzureCredential can grab your identity: [16] 
@@ -359,8 +364,12 @@ Install-Package Azure.Security.KeyVault.Secrets
 ------------------------------
 ## Step 5: Write the C# Code to Fetch the Secret
 Update your Program.cs file. The code uses DefaultAzureCredential to verify your identity and directly requests the secret by its name without processing any local text files or configuration parsing. [36, 37, 38] 
+'''
+using System;
+using System.Threading.Tasks;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
-using System;using System.Threading.Tasks;using Azure.Identity;using Azure.Security.KeyVault.Secrets;
 class Program
 {
     static async Task Main(string[] args)
@@ -398,7 +407,7 @@ class Program
         Console.ReadKey();
     }
 }
-
+'''
 ------------------------------
 ## Step 6: Test the Secure Application
 
