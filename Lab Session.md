@@ -1,10 +1,9 @@
 ## Azure Hands-On Lab: Deploying a Linux Web Server from Windows
-Welcome to your first Linux deployment on Azure. As a Windows programmer, you can think of a Linux Virtual Machine (VM) as a cloud-based server without a graphical user interface (GUI). Instead of clicking buttons, we interact with it using text commands.
+As a Windows programmer, you can think of a Linux Virtual Machine (VM) as a cloud-based server without a graphical user interface (GUI). Instead of clicking buttons, we interact with it using text commands.
 This lab manual will guide you through creating a Linux server, connecting to it from your Windows command prompt, installing the Nginx web server (similar to IIS), and hosting a simple webpage. [1, 2] 
-------------------------------
+
 ## Prerequisites
 Before starting, ensure you have the following ready on your Windows machine:
-
 * Azure Account: An active Azure subscription with permissions to create resources.
 * Windows Terminal or Command Prompt: Built-in tools (Windows 10/11 have SSH client enabled by default).
 * Web Browser: Microsoft Edge, Google Chrome, or any browser of your choice. [3, 4] 
